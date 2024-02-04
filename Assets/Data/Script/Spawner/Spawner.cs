@@ -46,6 +46,7 @@ public abstract class Spawner : HuyMonoBehaviour
             this.prefabs.Add(obj);
         }
         Debug.Log(transform.name + ": LoadPrefabs", transform.gameObject);
+        this.HidePrefab();
     }
 
     //=====================================Public==================================================

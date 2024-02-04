@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSpawner : Spawner
+public class GameManager : HuyMonoBehaviour
 {
-    private static PlayerSpawner instance;
-    public static PlayerSpawner Instance => Instance;
+    private static GameManager instance;
+    public static GameManager Instance => instance;
 
     protected override void Awake()
     {
