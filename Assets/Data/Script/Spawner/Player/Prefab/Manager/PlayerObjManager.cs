@@ -12,6 +12,9 @@ public class PlayerObjManager : HuyMonoBehaviour
     [SerializeField] protected BoxCollider2D bodyCollide;
     public BoxCollider2D BodyCollide => bodyCollide;
 
+    [SerializeField] protected PlayerObjSO playerObjSO;
+    public PlayerObjSO PlayerObjSO => playerObjSO;
+
     protected override void LoadComponent()
     {
         base.LoadComponent();

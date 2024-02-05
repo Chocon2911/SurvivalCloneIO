@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8963da2cd838d094d8afc8f185159820, type: 3}
-  m_Name: PlayerMovement_1
+  m_Script: {fileID: 11500000, guid: a3cce09c962bcd94e9a6ec8defab811f, type: 3}
+  m_Name: Player_1
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  canMove: 1
-  isMoving: 0
+  doanh: 1

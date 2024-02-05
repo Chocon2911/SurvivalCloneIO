@@ -13,6 +13,9 @@ public class InputManager : HuyMonoBehaviour
     [SerializeField] protected float yInput;
     public float YInput => yInput;
 
+    [SerializeField] protected float dashInput;
+    public float DashInput => dashInput;
+
     protected override void Awake()
     {
         base.Awake();
@@ -29,5 +32,8 @@ public class InputManager : HuyMonoBehaviour
     {
         this.xInput = Input.GetAxisRaw("Horizontal");
         this.yInput = Input.GetAxisRaw("Vertical");
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKey(KeyCode.LeftShift)) this.dashInput = 1;
+        else this.dashInput = 0;
     }
 }

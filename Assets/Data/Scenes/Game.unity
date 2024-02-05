@@ -535,6 +535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xInput: 0
   yInput: 0
+  dashInput: 0
 --- !u!1 &1204583030
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,6 +619,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1338735734}
   bodyCollide: {fileID: 1338735733}
+  playerObjSO: {fileID: 11400000, guid: 6afeb2aa8a2b8414492fff797443795c, type: 2}
 --- !u!61 &1338735733
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -735,7 +737,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObjManager: {fileID: 1338735732}
-  movementSO: {fileID: 11400000, guid: 9d663324ff06b684786fc17855e1f371, type: 2}
+  moveSpeed: 0
+  canMove: 0
+  isMoving: 0
+  dashSpeed: 0
+  dashCooldown: 0
+  dashCooldownTimer: 0
+  dashInterval: 0
+  dashIntervalTimer: 0
+  canDash: 0
+  isDashing: 0
 --- !u!1 &1807281864
 GameObject:
   m_ObjectHideFlags: 0
