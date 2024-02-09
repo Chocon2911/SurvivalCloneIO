@@ -9,14 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3cce09c962bcd94e9a6ec8defab811f, type: 3}
-  m_Name: Player_1
+  m_Script: {fileID: 11500000, guid: 89af1a0b780d23040a74d4d8c63e8a67, type: 3}
+  m_Name: Bullet_1
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  dashSpeed: 20
-  dashCooldown: 1
-  dashInterval: 0.5
-  hp: 3
-  damge: 1
-  attackCooldown: 0.5
-  attackCharge: 0

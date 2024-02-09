@@ -5,7 +5,10 @@ using UnityEngine;
 public class PlayerSpawner : Spawner
 {
     private static PlayerSpawner instance;
-    public static PlayerSpawner Instance => Instance;
+    public static PlayerSpawner Instance => instance;
+
+    [SerializeField] protected string playerOne = "Player_1";
+    public string PlayerOne => playerOne;
 
     protected override void Awake()
     {

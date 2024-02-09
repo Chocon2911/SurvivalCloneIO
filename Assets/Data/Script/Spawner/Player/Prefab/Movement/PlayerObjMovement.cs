@@ -15,10 +15,12 @@ public class PlayerObjMovement : HuyMonoBehaviour
 
     [Header("Dash")]
     [SerializeField] protected float dashSpeed = 0f;
+
     [SerializeField] protected float dashCooldown = 0f;
-    [SerializeField] protected float dashCooldownTimer = 0f;
+    [SerializeField] private float dashCooldownTimer = 0f;
     [SerializeField] protected float dashInterval = 0f;
-    [SerializeField] protected float dashIntervalTimer = 0f;
+    [SerializeField] private float dashIntervalTimer = 0f;
+
     [SerializeField] protected bool canDash = false;
     [SerializeField] protected bool isDashing = false;
 

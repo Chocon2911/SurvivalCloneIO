@@ -11,8 +11,14 @@ public class PlayerObjSO : ScriptableObject
     [SerializeField] private float dashCooldown = 1f; public float DashCooldown => dashCooldown;
     [SerializeField] private float dashInterval = 0.5f; public float DashInterval => dashInterval;
 
+
     [Header("Stat")]
     [SerializeField] private float hp = 3f; public float Hp => hp;
+
+
+    [Header("Attack")]
     [SerializeField] private float damge = 1f; public float Damge => damge;
     [SerializeField] private float attackCooldown = 1f; public float AttackCooldown => attackCooldown;
+    [SerializeField] private float attackCharge = 1f; public float AttackCharge => attackCharge;
 }
+
