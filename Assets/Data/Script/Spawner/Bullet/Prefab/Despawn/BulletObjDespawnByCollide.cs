@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletObjDespawnByDistance : DespawnByDistance
+public class BulletObjDespawnByCollide : Despawner
 {
     [SerializeField] protected BulletObjManager bulletObjManager;
     public BulletObjManager BulletObjManager => bulletObjManager;
+
+    [SerializeField] protected bool isCollide;
+    public bool IsCollide => isCollide;
 
     protected override void LoadComponent()
     {
@@ -13,13 +16,13 @@ public class BulletObjDespawnByDistance : DespawnByDistance
         this.LoadBulletObjManager();
     }
 
-    protected override void ResetValue()
+    protected override void OnEnable()
     {
-        base.ResetValue();
-        this.BasetStat();
+        base.OnEnable();
+        this.SetIsCollide(false);
     }
 
-    //======================================Load Component=========================================
+    //=================================Load Component==============================================
     protected virtual void LoadBulletObjManager()
     {
         if (this.bulletObjManager != null) return;
@@ -27,15 +30,22 @@ public class BulletObjDespawnByDistance : DespawnByDistance
         Debug.Log(transform.name + ": LoadBulletObjManager", transform.gameObject);
     }
 
-    //=======================================Reset Value===========================================
-    protected virtual void BasetStat()
+    //=====================================Despawner===============================================
+    protected override void CheckCanDespawn()
     {
-        this.maxDistance = 50f;
+        if (!this.isCollide) return;
+        this.canDespawn = true;
     }
 
     protected override void DespawnObj()
     {
         BulletSpawner.Instance.DespawnObj(transform.parent);
         Debug.Log(transform.name + ": DespawnObj", transform.gameObject);
+    }
+
+    //=======================================Setter================================================
+    public virtual void SetIsCollide(bool isCollide)
+    {
+        this.isCollide = isCollide;
     }
 }

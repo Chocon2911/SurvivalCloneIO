@@ -31,7 +31,7 @@ public class BulletObjFly : StraightFly
     protected virtual void BaseFlySpeed()
     {
         this.flySpeed = this.bulletObjManager.BulletObjSO.MoveSpeed;
-        Debug.Log(transform.name + ": LoadFLySpeed", transform.gameObject);
+        Debug.Log(transform.name + ": BaseFLySpeed", transform.gameObject);
     }
 
     //==========================================public=============================================

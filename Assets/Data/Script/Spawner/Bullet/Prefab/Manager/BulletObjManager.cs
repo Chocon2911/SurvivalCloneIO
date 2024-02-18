@@ -6,14 +6,26 @@ using UnityEngine;
 [RequireComponent(typeof(CapsuleCollider2D))]
 public class BulletObjManager : HuyMonoBehaviour
 {
+    [SerializeField] protected BulletObjCtrl bulletObjCtrl;
+    public BulletObjCtrl BulletObjCtrl => bulletObjCtrl;
+
+    [SerializeField] protected BulletObjFly bulletObjFly;
+    public BulletObjFly BulletObjFly => bulletObjFly;
+
+    [SerializeField] protected BulletObjDespawnByDistance despawnByDistance;
+    public BulletObjDespawnByDistance DespawnByDistance => despawnByDistance;
+
+    [SerializeField] protected BulletObjDespawnByCollide despawnByCollide;
+    public BulletObjDespawnByCollide DespawnByCollide => despawnByCollide;
+
+    [SerializeField] protected DamageSender damageSender;
+    public DamageSender DamageSender => damageSender;
+
     [SerializeField] protected Rigidbody2D rb;
     public Rigidbody2D Rb => rb;
 
     [SerializeField] protected CapsuleCollider2D bodyCollider;
     public CapsuleCollider2D BodyCollider => bodyCollider;
-
-    [SerializeField] protected BulletObjFly bulletObjFly;
-    public BulletObjFly BulletObjFly => bulletObjFly;
 
     [SerializeField] protected BulletObjSO bulletObjSO;
     public BulletObjSO BulletObjSO => bulletObjSO;
@@ -21,9 +33,13 @@ public class BulletObjManager : HuyMonoBehaviour
     protected override void LoadComponent()
     {
         base.LoadComponent();
+        this.LoadBulletObjCtrl();
+        this.LoadBulletObjFly();
+        this.LoadDespawnByDistance();
+        this.LoadDespawnByCollide();
+        this.LoadDamageSender();
         this.LoadRigidbody();
         this.LoadBodyCollider();
-        this.LoadBulletObjFly();
     }
 
     protected override void ResetValue()
@@ -48,11 +64,39 @@ public class BulletObjManager : HuyMonoBehaviour
         Debug.Log(transform.name + ": LoadBodyCollider");
     }
 
+    protected virtual void LoadBulletObjCtrl()
+    {
+        if (this.bulletObjCtrl != null) return;
+        this.bulletObjCtrl = transform.GetComponent<BulletObjCtrl>();
+        Debug.Log(transform.name + ": loadBulletObjCtrl", transform.gameObject);
+    }
+
     protected virtual void LoadBulletObjFly()
     {
         if (this.bulletObjFly != null) return;
         this.bulletObjFly = transform.Find("Movement").GetComponent<BulletObjFly>();
         Debug.Log(transform.name + ": LoadBulletObjFly", transform.gameObject);
+    }
+
+    protected virtual void LoadDespawnByCollide()
+    {
+        if (this.despawnByCollide != null) return;
+        this.despawnByCollide = transform.Find("Despawn").GetComponent<BulletObjDespawnByCollide>();
+        Debug.Log(transform.name + ": LoadDespawnByCollide", transform.gameObject);
+    }
+
+    protected virtual void LoadDespawnByDistance()
+    {
+        if (this.despawnByDistance != null) return;
+        this.despawnByDistance = transform.Find("Despawn").GetComponent<BulletObjDespawnByDistance>();
+        Debug.Log(transform.name + ": LoadDespawnByDistance", transform.gameObject);
+    }
+
+    protected virtual void LoadDamageSender()
+    {
+        if (this.damageSender != null) return;
+        this.damageSender = transform.Find("DamageSender").GetComponent<DamageSender>();
+        Debug.Log(transform.name + ": LoadDamageSender", transform.gameObject);
     }
     //===================================Reset Value===============================================
     protected virtual void DefaultRigidbody()

@@ -6,6 +6,18 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class PlayerObjManager : HuyMonoBehaviour
 {
+    [SerializeField] protected PlayerObjCtrl playerObjCtrl;
+    public PlayerObjCtrl PlayerObjCtrl => playerObjCtrl;
+
+    [SerializeField] protected PlayerObjMovement playerObjMovement;
+    public PlayerObjMovement PlayerObjMovement => playerObjMovement;
+
+    [SerializeField] protected PlayerObjShoot playerObjShoot;
+    public PlayerObjShoot PlayerObjShoot => playerObjShoot;
+
+    [SerializeField] protected DamageReceiver damageReceiver;
+    public DamageReceiver DamageReceiver => damageReceiver;
+
     [SerializeField] protected Rigidbody2D rb;
     public Rigidbody2D Rb => rb;
 
@@ -18,11 +30,43 @@ public class PlayerObjManager : HuyMonoBehaviour
     protected override void LoadComponent()
     {
         base.LoadComponent();
+        this.LoadPlayerObjCtrl();
+        this.LoadPlayerObjMovement();
+        this.LoadPlayerObjShoot();
+        this.LoadDamageReceiver();
         this.LoadRigidbody();
         this.LoadBodyCollide();
     }
 
     //==================================Load Component=============================================
+    protected virtual void LoadPlayerObjCtrl()
+    {
+        if (this.playerObjCtrl != null) return;
+        this.playerObjCtrl = transform.GetComponent<PlayerObjCtrl>();
+        Debug.Log(transform.name + ": LoadPlayerObjCtrl", transform.gameObject);
+    }
+
+    protected virtual void LoadPlayerObjMovement()
+    {
+        if (this.playerObjMovement != null) return;
+        this.playerObjMovement = transform.Find("Movement").GetComponent<PlayerObjMovement>();
+        Debug.Log(transform.name + ": LoadPlayerObjMovement", transform.gameObject);
+    }
+
+    protected virtual void LoadPlayerObjShoot()
+    {
+        if (this.playerObjShoot != null) return;
+        this.playerObjShoot = transform.Find("Shoot").GetComponent<PlayerObjShoot>();
+        Debug.Log(transform.name + ": LoadPlayerShoot", transform.gameObject);
+    }
+
+    protected virtual void LoadDamageReceiver()
+    {
+        if (this.damageReceiver != null) return;
+        this.damageReceiver = transform.Find("DamageReceiver").GetComponent<DamageReceiver>();
+        Debug.Log(transform.name + ": LoadDamageReceiver", transform.gameObject);
+    }
+
     protected virtual void LoadRigidbody()
     {
         if (this.rb != null) return;

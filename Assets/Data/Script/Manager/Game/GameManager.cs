@@ -10,6 +10,9 @@ public class GameManager : HuyMonoBehaviour
     [SerializeField] protected Camera mainCamera;
     public Camera MainCamera => mainCamera;
 
+    [SerializeField] protected List<Transform> activePlayers;
+    public List<Transform> ActivePlayers => activePlayers;
+
     protected override void Awake()
     {
         base.Awake();
@@ -35,5 +38,21 @@ public class GameManager : HuyMonoBehaviour
         if (this.mainCamera != null) return;
         this.mainCamera = FindAnyObjectByType<Camera>();
         Debug.Log(transform.name + ": LoadMainCamera", transform.gameObject);
+    }
+
+    //=======================================public================================================
+    public virtual void AddActivePlayerObj(Transform playerObj)
+    {
+        this.activePlayers.Add(playerObj);
+        Debug.Log(transform.name + ": AddActivePlayerObj", transform.gameObject);
+    }
+
+    public virtual void DeleteDeActivePlayerObj()
+    {
+        foreach (Transform playerObj in this.activePlayers)
+        {
+            if (!playerObj.gameObject.activeSelf) this.activePlayers.Remove(playerObj); 
+        }
+        Debug.Log(transform.name + ": DeleteDeActivePlayerObj", transform.gameObject);
     }
 }
