@@ -82,7 +82,7 @@ public class EnemyObjShoot : HuyMonoBehaviour
         this.shootCooldownTimer = 0;
         yield return new WaitForSeconds(this.shootCharge);
 
-        Transform newPrefab = BulletSpawner.Instance.Spawn(BulletSpawner.Instance.BulletOne, this.SpawnPos(), this.SpawnRot());
+        Transform newPrefab = BulletSpawner.Instance.Spawn(BulletSpawner.Instance.BulletTwo, this.SpawnPos(), this.SpawnRot());
         if (newPrefab == null) yield break;
         newPrefab.gameObject.SetActive(true);
         Debug.Log(transform.name + ": Shooting", transform.gameObject);

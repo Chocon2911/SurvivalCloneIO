@@ -15,6 +15,9 @@ public class PlayerObjManager : HuyMonoBehaviour
     [SerializeField] protected PlayerObjShoot playerObjShoot;
     public PlayerObjShoot PlayerObjShoot => playerObjShoot;
 
+    [SerializeField] protected PlayerObjDespawnByHealth despawnByHealth;
+    public PlayerObjDespawnByHealth DespawnByHealth => despawnByHealth;
+
     [SerializeField] protected DamageReceiver damageReceiver;
     public DamageReceiver DamageReceiver => damageReceiver;
 
@@ -33,6 +36,7 @@ public class PlayerObjManager : HuyMonoBehaviour
         this.LoadPlayerObjCtrl();
         this.LoadPlayerObjMovement();
         this.LoadPlayerObjShoot();
+        this.LoadDespawnByHealth();
         this.LoadDamageReceiver();
         this.LoadRigidbody();
         this.LoadBodyCollide();
@@ -58,6 +62,13 @@ public class PlayerObjManager : HuyMonoBehaviour
         if (this.playerObjShoot != null) return;
         this.playerObjShoot = transform.Find("Shoot").GetComponent<PlayerObjShoot>();
         Debug.Log(transform.name + ": LoadPlayerShoot", transform.gameObject);
+    }
+
+    protected virtual void LoadDespawnByHealth()
+    {
+        if (this.despawnByHealth != null) return;
+        this.despawnByHealth = transform.Find("Despawn").GetComponent<PlayerObjDespawnByHealth>();
+        Debug.Log(transform.name + ": LoadDespawnByHealth", transform.gameObject);
     }
 
     protected virtual void LoadDamageReceiver()

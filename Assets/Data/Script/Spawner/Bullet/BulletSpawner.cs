@@ -10,6 +10,9 @@ public class BulletSpawner : Spawner
     [SerializeField] protected string bulletOne = "Bullet_1";
     public string BulletOne => bulletOne;
 
+    [SerializeField] protected string bulletTwo = "Bullet_2";
+    public string BulletTwo => bulletTwo;
+
     protected override void Awake()
     {
         base.Awake();

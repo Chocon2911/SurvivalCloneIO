@@ -9,10 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89af1a0b780d23040a74d4d8c63e8a67, type: 3}
-  m_Name: Bullet_1
+  m_Script: {fileID: 11500000, guid: 253dd6c0a1a1bae498a2b39ff8953f14, type: 3}
+  m_Name: Level_1
   m_EditorClassIdentifier: 
-  moveSpeed: 15
-  damage: 1
-  existTime: 10
-  maxDistance: 50
+  timeLevel:
+  - 0
+  - 10
+  - 30
+  - 60
+  - 90
+  - 120
+  - 180

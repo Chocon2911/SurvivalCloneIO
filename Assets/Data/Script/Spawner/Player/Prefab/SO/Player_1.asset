@@ -18,5 +18,5 @@ MonoBehaviour:
   dashInterval: 0.5
   hp: 3
   damge: 1
-  attackCooldown: 0.5
+  attackCooldown: 0.25
   attackCharge: 0
