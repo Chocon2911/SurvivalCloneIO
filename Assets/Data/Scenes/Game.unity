@@ -228,6 +228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 81374006}
   - component: {fileID: 81374007}
+  - component: {fileID: 81374008}
   m_Layer: 0
   m_Name: SpawnPoints
   m_TagString: Untagged
@@ -266,6 +267,20 @@ MonoBehaviour:
   playerManager: {fileID: 1824864523}
   spawnPoints:
   - {fileID: 326281622}
+--- !u!114 &81374008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81374005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49124bcc132d8c8469b7ec66fef377f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followCameraSO: {fileID: 11400000, guid: 3dcdccded49f6ac43ae8b495ac41b830, type: 2}
+  speed: 0
 --- !u!1 &102758242
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,6 +835,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -901,6 +917,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1040364556}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 596dac49edb36fd448cb69e2a6f87d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followPlayerSO: {fileID: 11400000, guid: 0db2eea33dd00e94c939ebe45189e5db, type: 2}
+  speed: 0
 --- !u!1 &571156984
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,6 +1034,7 @@ GameObject:
   m_Component:
   - component: {fileID: 628660857}
   - component: {fileID: 628660858}
+  - component: {fileID: 628660859}
   m_Layer: 0
   m_Name: SpawnPoints
   m_TagString: Untagged
@@ -1086,6 +1117,20 @@ MonoBehaviour:
   - {fileID: 1288716209}
   - {fileID: 1059162718}
   - {fileID: 498833173}
+--- !u!114 &628660859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628660856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49124bcc132d8c8469b7ec66fef377f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followCameraSO: {fileID: 11400000, guid: 00524c0abdcd1ff468b55cf22db616c5, type: 2}
+  speed: 0
 --- !u!1 &669161015
 GameObject:
   m_ObjectHideFlags: 0

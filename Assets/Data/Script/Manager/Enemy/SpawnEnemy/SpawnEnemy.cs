@@ -81,7 +81,7 @@ public class SpawnEnemy : HuyMonoBehaviour
     public virtual void LevelUp(float level)
     {
         this.spawnCooldown /= level;
-        Debug.Log(transform.name + ": LevelUp + " + level, transform.gameObject);
+        Debug.Log(transform.name + " Level: +" + level, transform.gameObject);
     }
 
     //========================================Other Func===========================================

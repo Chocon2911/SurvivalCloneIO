@@ -46,7 +46,7 @@ public class EnemyObjFollowPlayer : Follower
         float moveSpeed = this.moveSpeed;
         Transform closestActivePlayer = this.enemyObjManager.ClosestActivePlayer;
 
-        this.enemyObjManager.Rb.velocity = this.Move2Target(closestActivePlayer, moveSpeed);
+        this.enemyObjManager.Rb.velocity = this.Move2TargetVelocity(closestActivePlayer, moveSpeed);
     }
 
     //=========================================Default Stat========================================

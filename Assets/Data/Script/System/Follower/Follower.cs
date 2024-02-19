@@ -9,10 +9,9 @@ public abstract class Follower : HuyMonoBehaviour
         this.CanFollow();
     }
 
-    protected virtual Vector2 Move2Target(Transform target, float speed)
+    protected virtual Vector2 Move2TargetVelocity(Transform target, float speed)
     {
-        if (!this.CanFollow()) return Vector2.zero;
-        if (target == null) return Vector2.zero;
+        if (!this.CanFollow() || target == null) return Vector2.zero;
         Vector2 targetPos = target.position;
         Vector2 objPos = transform.parent.position;
         Vector2 dir = targetPos - objPos;
