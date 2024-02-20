@@ -72,7 +72,7 @@ public class EnemyObjShoot : HuyMonoBehaviour
     //========================================Shoot================================================
     protected virtual void Shoot()
     {
-        if (!this.canShoot || this.isShooting || this.enemyObjManager == null) return;
+        if (!this.canShoot || this.isShooting || this.enemyObjManager.ClosestActivePlayer == null) return;
         StartCoroutine(this.Shooting());
     }
 

@@ -7,16 +7,15 @@ public class BulletObjDespawnByDistance : DespawnByDistance
     [SerializeField] protected BulletObjManager bulletObjManager;
     public BulletObjManager BulletObjManager => bulletObjManager;
 
+    protected override void OnEnable()
+    {
+        this.BasetStat();
+    }
+
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadBulletObjManager();
-    }
-
-    protected override void ResetValue()
-    {
-        base.ResetValue();
-        this.BasetStat();
     }
 
     //======================================Load Component=========================================
@@ -30,7 +29,7 @@ public class BulletObjDespawnByDistance : DespawnByDistance
     //=======================================Reset Value===========================================
     protected virtual void BasetStat()
     {
-        this.maxDistance = 50f;
+        this.maxDistance = this.bulletObjManager.BulletObjSO.MaxDistance;
     }
 
     protected override void DespawnObj()
