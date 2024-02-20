@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76cba101862f57542ae1d4be38065f60, type: 3}
   m_Name: MainCamera
   m_EditorClassIdentifier: 
-  speed: 0.5
+  speed: 0.1

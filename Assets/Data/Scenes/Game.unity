@@ -291,6 +291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 102758243}
   - component: {fileID: 102758244}
+  - component: {fileID: 102758245}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -327,6 +328,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 519420031}
   activePlayers: []
+--- !u!114 &102758245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102758242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6897dd21aa82a84d8fa5a2a45d58a5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 102758244}
+  isGameOver: 0
 --- !u!1 &113732982
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,7 +901,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1665,7 +1680,7 @@ MonoBehaviour:
   damageSender: {fileID: 830331560}
   rb: {fileID: 1111496192}
   bodyCollider: {fileID: 1111496191}
-  bulletObjSO: {fileID: 11400000, guid: 801e9b1b90c90ac459176782fed1f4ea, type: 2}
+  bulletObjSO: {fileID: 11400000, guid: bfb7a10cb465da9439efcc4bf633b6e9, type: 2}
 --- !u!70 &1111496191
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
