@@ -21,6 +21,9 @@ public class PlayerObjManager : HuyMonoBehaviour
     [SerializeField] protected DamageReceiver damageReceiver;
     public DamageReceiver DamageReceiver => damageReceiver;
 
+    [SerializeField] protected PlayerObjLevel playerObjLevel;
+    public PlayerObjLevel PlayerObjLevel => playerObjLevel;
+
     [SerializeField] protected Rigidbody2D rb;
     public Rigidbody2D Rb => rb;
 
@@ -38,6 +41,7 @@ public class PlayerObjManager : HuyMonoBehaviour
         this.LoadPlayerObjShoot();
         this.LoadDespawnByHealth();
         this.LoadDamageReceiver();
+        this.LoadPlayerObjLevel();
         this.LoadRigidbody();
         this.LoadBodyCollide();
     }
@@ -76,6 +80,13 @@ public class PlayerObjManager : HuyMonoBehaviour
         if (this.damageReceiver != null) return;
         this.damageReceiver = transform.Find("DamageReceiver").GetComponent<DamageReceiver>();
         Debug.Log(transform.name + ": LoadDamageReceiver", transform.gameObject);
+    }
+
+    protected virtual void LoadPlayerObjLevel()
+    {
+        if (this.playerObjLevel != null) return;
+        this.playerObjLevel = transform.Find("Level").GetComponent<PlayerObjLevel>();
+        Debug.Log(transform.name + ": LoadPlayerObjLevel", transform.gameObject);
     }
 
     protected virtual void LoadRigidbody()

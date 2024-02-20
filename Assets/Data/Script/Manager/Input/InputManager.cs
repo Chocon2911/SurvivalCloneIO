@@ -50,7 +50,7 @@ public class InputManager : HuyMonoBehaviour
 
     protected virtual void GetAttackInput()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse0)) this.shootInput = 1;
+        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)) this.shootInput = 1;
         else this.shootInput = 0;
     }
 
