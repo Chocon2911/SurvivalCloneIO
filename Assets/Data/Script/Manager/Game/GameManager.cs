@@ -34,7 +34,7 @@ public class GameManager : HuyMonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        this.DeleteDeActivePlayerObj();
+        this.CheckActivePlayer();
     }
 
     //=====================================Load Component==========================================
@@ -45,25 +45,16 @@ public class GameManager : HuyMonoBehaviour
         Debug.Log(transform.name + ": LoadMainCamera", transform.gameObject);
     }
 
-    //=======================================public================================================
-    public virtual void AddActivePlayerObj(Transform playerObj)
+    //=======================================Player List===========================================
+    protected virtual void CheckActivePlayer()
     {
-        this.activePlayers.Add(playerObj);
-        Debug.Log(transform.name + ": AddActivePlayerObj", transform.gameObject);
-    }
-
-    public virtual void DeleteDeActivePlayerObj()
-    {
-        List<Transform> canRemovedPlayers = new List<Transform>();
-        foreach (Transform playerObj in this.activePlayers)
+        Transform holderTrans = PlayerSpawner.Instance.transform.Find("Holder");
+        List<Transform> activePlayers = new List<Transform>();
+        foreach (Transform player in holderTrans)
         {
-            if (!playerObj.gameObject.activeSelf) canRemovedPlayers.Add(playerObj);
+            if (player.gameObject.activeSelf) activePlayers.Add(player);
         }
-        if (canRemovedPlayers == null) return;
 
-        foreach (Transform playerObj in canRemovedPlayers)
-        {
-            this.activePlayers.Remove(playerObj);
-        }
+        this.activePlayers = activePlayers;
     }
 }

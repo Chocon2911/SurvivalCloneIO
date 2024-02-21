@@ -18,7 +18,6 @@ public class PlayerSpawnObj : PlayerManagerChild
 
         Transform newPrefab = PlayerSpawner.Instance.Spawn(prefabName, spawnPos, spawnRot);
         newPrefab.gameObject.SetActive(true);
-        GameManager.Instance.AddActivePlayerObj(newPrefab);
         Debug.Log(transform.name + ": SpawnPlayer", transform.gameObject);
     }
 }
