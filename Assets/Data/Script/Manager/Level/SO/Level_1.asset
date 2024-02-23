@@ -9,10 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4fd3dcfb8fcc0e479bc12a4b00d34be, type: 3}
-  m_Name: Player_1
+  m_Script: {fileID: 11500000, guid: cd30a68fd5543e94abadfa6cc0b25468, type: 3}
+  m_Name: Level_1
   m_EditorClassIdentifier: 
-  levelUpExps:
-  - 20
-  - 50
-  - 100
+  levelTimes:
+  - 0
+  - 60
+  - 120
+  - 180
+  - 240
+  - 300
+  enemySpawnAmount: 2
