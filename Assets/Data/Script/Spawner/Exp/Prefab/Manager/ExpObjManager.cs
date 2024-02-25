@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(CircleCollider2D))]
@@ -13,6 +14,12 @@ public class ExpObjManager : HuyMonoBehaviour
 
     [SerializeField] protected ExpSender expSender;
     public ExpSender ExpSender => expSender;
+
+    [SerializeField] protected ExpObjFollowTarget expObjFollowTarget;
+    public ExpObjFollowTarget ExpObjFollowTarget => expObjFollowTarget;
+
+    [SerializeField] protected ExpObjDespawnByCollide despawnByCollide;
+    public ExpObjDespawnByCollide DespawnByCollide => despawnByCollide;
 
     [SerializeField] protected ExpObjSO expObjSO;
     public ExpObjSO ExpObjSO => expObjSO;
@@ -28,6 +35,8 @@ public class ExpObjManager : HuyMonoBehaviour
         this.LoadBodyCollider();
         this.LoadExpObjCtrl();
         this.LoadExpSender();
+        this.LoadExpObjFollowTarget();
+        this.LoadExpObjDespawnByCollide();
     }
 
     //=====================================Load Component==========================================
@@ -50,6 +59,20 @@ public class ExpObjManager : HuyMonoBehaviour
         if (this.expSender != null) return;
         this.expSender = transform.Find("ExpSender").GetComponent<ExpSender>();
         Debug.Log(transform.name + ": LoadExpSender", transform.gameObject);
+    }
+
+    protected virtual void LoadExpObjFollowTarget()
+    {
+        if (this.expObjFollowTarget != null) return;    
+        this.expObjFollowTarget = transform.Find("FollowPlayer").GetComponent<ExpObjFollowTarget>();
+        Debug.Log(transform.name + ": LoadExpObjFollowTarget", transform.gameObject);
+    }
+
+    protected virtual void LoadExpObjDespawnByCollide()
+    {
+        if (this.despawnByCollide != null) return;
+        this.despawnByCollide = transform.Find("Despawn").GetComponent<ExpObjDespawnByCollide>();
+        Debug.Log(transform.name + ": LoadExpObjDespawnByCollide", transform.gameObject);
     }
 
     //======================================Other Func=============================================

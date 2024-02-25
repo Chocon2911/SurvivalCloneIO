@@ -30,6 +30,8 @@ public class ExpObjCtrl : HuyMonoBehaviour
         {
             if (collision.gameObject.CompareTag(tag))
             {
+                this.expObjManager.ExpSender.LoadExpReceiver(collision.transform);
+                this.expObjManager.ExpSender.SendExp();
                 this.isCollide = true;
             }
         }

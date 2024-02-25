@@ -28,6 +28,7 @@ public class ExpSender : HuyMonoBehaviour
     //=======================================public================================================
     public virtual void SendExp()
     {
+        if (this.isPickUp) return;
         if (this.expReceiver == null) Debug.LogError(transform.name + ": ExpReceiver is null", transform.gameObject);
         this.expReceiver.RaiseExp(this.expAmount);
         this.isPickUp = true;
