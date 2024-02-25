@@ -17,6 +17,11 @@ public class PlayerSpawnObj : PlayerManagerChild
         string prefabName = PlayerSpawner.Instance.PlayerOne;
 
         Transform newPrefab = PlayerSpawner.Instance.Spawn(prefabName, spawnPos, spawnRot);
+        if (newPrefab == null )
+        {
+            Debug.LogError(transform.name + ": NewPlayer is null", transform.gameObject);
+            return;
+        }
         newPrefab.gameObject.SetActive(true);
         Debug.Log(transform.name + ": SpawnPlayer", transform.gameObject);
     }
