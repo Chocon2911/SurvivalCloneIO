@@ -10,6 +10,6 @@ public class LevelSO : ScriptableObject
     public List<float> LevelTimes => levelTimes;
 
     [Header("Enemy")]
-    [SerializeField] protected int enemySpawnAmount;
-    public int EnemySpawnAmount => enemySpawnAmount;
+    [SerializeField] protected List<int> enemySpawnAmountByLevel;
+    public List<int> EnemySpawnAmountByLevel => enemySpawnAmountByLevel;
 }

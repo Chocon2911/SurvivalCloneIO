@@ -11,7 +11,7 @@ public class LevelManager : HuyMonoBehaviour
     public LevelByTime LevelByTime => levelByTime;
 
     [SerializeField] protected LevelSO levelSO;
-    public LevelSO LevelSO => levelSO;
+    public LevelSO LevelSO => levelSO; 
 
     protected override void Awake()
     {
@@ -39,5 +39,4 @@ public class LevelManager : HuyMonoBehaviour
         this.levelByTime = transform.Find("ByTime").GetComponent<LevelByTime>();
         Debug.Log(transform.name + ": LoadLevelByTime", transform.gameObject);
     }
-
 }

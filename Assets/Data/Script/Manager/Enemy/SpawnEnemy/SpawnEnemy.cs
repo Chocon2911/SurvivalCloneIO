@@ -10,8 +10,7 @@ public class SpawnEnemy : HuyMonoBehaviour
     private Transform randomPoint;
 
     [Header("Stat")]
-    [SerializeField] protected float spawnCooldown;
-    [SerializeField] protected float spawnCooldownTimer;
+    [SerializeField] protected int currLevel;
     [SerializeField] protected int spawnAmount;
     [SerializeField] protected int maxEnemy;
 
@@ -26,14 +25,10 @@ public class SpawnEnemy : HuyMonoBehaviour
         this.LoadEnemyManager();
     }
 
-    protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
+        this.UpdateStat();
         this.CanSpawn();
-        this.Spawn();
-    }
-
-    protected virtual void Start()
-    {
         this.Spawn();
     }
 
@@ -45,11 +40,11 @@ public class SpawnEnemy : HuyMonoBehaviour
         Debug.Log(transform.name + ": LoadEnemyManager", transform.gameObject);
     }
 
-    //==========================================Checker===============================================
+    //==========================================Checker============================================
     protected virtual bool CanSpawn()
     {
-        if (this.spawnCooldownTimer < this.spawnCooldown) this.spawnCooldownTimer += Time.deltaTime;
-        return this.spawnCooldownTimer >= this.spawnCooldown;
+        if (this.currLevel >= LevelManager.Instance.LevelByTime.CurrentLevel) return false;
+        return true;
     }
 
     //==========================================Spawn==============================================
@@ -59,13 +54,13 @@ public class SpawnEnemy : HuyMonoBehaviour
 
         for (int i = 0; i < this.spawnAmount; i++)
         { 
-            this.spawnCooldownTimer = 0;
             this.GetRandomPoint();
             Transform newPrefab = EnemySpawner.Instance.Spawn(EnemySpawner.Instance.EnemyOne, this.SpawnPos(), this.SpawnRot());
 
             if (newPrefab == null) return;
             newPrefab.gameObject.SetActive(true);
         }
+        this.currLevel += 1;
     }
 
     protected virtual Vector2 SpawnPos()
@@ -90,8 +85,13 @@ public class SpawnEnemy : HuyMonoBehaviour
     protected virtual void DefaultStat()
     {
         if (this.enemyManager.EnemySO == null || this.enemyManager == null) Debug.LogError(transform.name + ": No EnemyManger or SO", transform.gameObject);
-        this.spawnCooldown = this.enemyManager.EnemySO.Cooldown;
-        this.spawnAmount = LevelManager.Instance.LevelSO.EnemySpawnAmount;
+        this.currLevel = 0;
         this.maxEnemy = this.enemyManager.EnemySO.MaxEnemy;
+    }
+
+    protected virtual void UpdateStat()
+    {
+        if (this.enemyManager.EnemySO == null || this.enemyManager == null) Debug.LogError(transform.name + ": No EnemyManger or SO", transform.gameObject);
+        this.spawnAmount = LevelManager.Instance.LevelByTime.EnemySpawnAmount;
     }
 }

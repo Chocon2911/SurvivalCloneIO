@@ -48,6 +48,7 @@ public class GameCtrl : HuyMonoBehaviour
     protected virtual IEnumerator LoadSceneAfterTime(float time)
     {
         yield return new WaitForSeconds(time);
+        this.isGameOver = false;
         SceneManager.LoadScene(0);
     }
 

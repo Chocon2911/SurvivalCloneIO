@@ -7,6 +7,9 @@ public abstract class FollowTranslate : HuyMonoBehaviour
     [SerializeField] protected float speed;
     public float Speed => speed;
 
+    [SerializeField] protected float zPos;
+    public float ZPos => zPos;
+
     protected virtual void FixedUpdate()
     {
         this.CanFollow();
@@ -19,7 +22,7 @@ public abstract class FollowTranslate : HuyMonoBehaviour
         Vector3 currPos = transform.parent.position;
 
         Vector3 newPos = Vector2.Lerp(currPos, targetPos, speed);
-        newPos += (Vector3.back * 10);
+        newPos += (Vector3.forward * this.zPos);
         transform.parent.position = newPos;
     }
 

@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: EnemySpawn_1
   m_EditorClassIdentifier: 
   cooldown: 10
+  maxEnemy: 30
+  followCameraSpeed: 1

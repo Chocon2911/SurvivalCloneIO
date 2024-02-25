@@ -31,6 +31,7 @@ public class EnemySpawnPoint : HuyMonoBehaviour
         Transform spawnPointsTrans = transform;
         foreach (Transform point in spawnPointsTrans)
         {
+            if (point.name.Contains("Point"))
             this.spawnPoints.Add(point);
         }
         Debug.Log(transform.name + ": LoadSpawnPoints", transform.gameObject);

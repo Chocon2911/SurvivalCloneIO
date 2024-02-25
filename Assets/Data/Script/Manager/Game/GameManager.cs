@@ -7,6 +7,9 @@ public class GameManager : HuyMonoBehaviour
     private static GameManager instance;
     public static GameManager Instance => instance;
 
+    [SerializeField] protected GameCtrl gameCtrl;
+    public GameCtrl GameCtrl => gameCtrl;
+
     [SerializeField] protected Camera mainCamera;
     public Camera MainCamera => mainCamera;
 
@@ -29,6 +32,7 @@ public class GameManager : HuyMonoBehaviour
     protected override void LoadComponent()
     {
         base.LoadComponent();
+        this.LoadGameCtrl();
         this.LoadMainCamera();
     }
 
@@ -43,6 +47,13 @@ public class GameManager : HuyMonoBehaviour
         if (this.mainCamera != null) return;
         this.mainCamera = FindAnyObjectByType<Camera>();
         Debug.Log(transform.name + ": LoadMainCamera", transform.gameObject);
+    }
+
+    protected virtual void LoadGameCtrl()
+    {
+        if (this.gameCtrl != null) return;
+        this.gameCtrl = transform.GetComponent<GameCtrl>();
+        Debug.Log(transform.name + ": LoadGameCtrl", transform.gameObject);
     }
 
     //=======================================Player List===========================================

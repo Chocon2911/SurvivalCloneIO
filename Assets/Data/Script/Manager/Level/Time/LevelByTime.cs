@@ -7,7 +7,7 @@ public class LevelByTime : HuyMonoBehaviour
     [SerializeField] protected LevelManager levelManager;
     public LevelManager LevelManager => levelManager;
 
-    [Header("Stat")]
+    [Header("Level")]
     [SerializeField] protected int currLevel;
     public int CurrentLevel => currLevel;
 
@@ -16,6 +16,10 @@ public class LevelByTime : HuyMonoBehaviour
 
     [SerializeField] protected List<float> levelTimes = new List<float>();
     public List<float> LevelTimes => levelTimes;
+
+    [Header("Enemy")]
+    [SerializeField] protected int enemySpawnAmount;
+    public int EnemySpawnAmount => enemySpawnAmount;
 
     protected virtual void OnEnable()
     {
@@ -33,6 +37,7 @@ public class LevelByTime : HuyMonoBehaviour
         this.CanCountTime();
         this.CountTime();
         this.CheckLevelUp();
+        this.UpdateStat();
     }
 
     //=====================================Load Component==========================================
@@ -66,8 +71,16 @@ public class LevelByTime : HuyMonoBehaviour
     //=======================================Other Func============================================
     protected virtual void DefaultStat()
     {
-        if (this.levelManager == null) Debug.Log(transform.name + ": No levelManager", transform.gameObject);
+        if (this.levelManager == null) Debug.LogError(transform.name + ": No levelManager", transform.gameObject);
+        //Level
         this.currLevel = 0;
         this.levelTimes = this.levelManager.LevelSO.LevelTimes;
+    }
+
+    protected virtual void UpdateStat()
+    {
+        if (this.levelManager == null) Debug.LogError(transform.name + ": No levelManager", transform.gameObject);
+        if (this.levelManager.LevelSO.EnemySpawnAmountByLevel.Count != this.levelManager.LevelSO.LevelTimes.Count) Debug.LogError(transform.name + ": EnemySpawnAmountByLevel must equal levelTimes", transform.gameObject);
+        this.enemySpawnAmount = this.levelManager.LevelSO.EnemySpawnAmountByLevel[this.currLevel];
     }
 }

@@ -56,5 +56,6 @@ public class CameraFollowPlayer : FollowTranslate
     {
         if (this.cameraManager == null) Debug.LogError(transform.name + ": No CameraManager", transform.gameObject);
         this.speed = this.cameraManager.CameraSO.Speed;
+        this.zPos = -10;
     }
 }
