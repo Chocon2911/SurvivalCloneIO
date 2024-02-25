@@ -32,8 +32,9 @@ public class BulletObjDespawnByDistance : DespawnByDistance
         this.maxDistance = this.bulletObjManager.BulletObjSO.MaxDistance;
     }
 
-    protected override void DespawnObj()
+    protected override IEnumerator DespawnObj()
     {
+        yield return new WaitForSeconds(1);
         BulletSpawner.Instance.DespawnObj(transform.parent);
         Debug.Log(transform.name + ": DespawnObj", transform.gameObject);
     }

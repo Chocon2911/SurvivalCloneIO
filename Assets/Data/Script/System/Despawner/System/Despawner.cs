@@ -11,7 +11,7 @@ public abstract class Despawner : HuyMonoBehaviour
         this.canDespawn = false;
     }
 
-    protected virtual void Update() 
+    protected virtual void LateUpdate() 
     {
         this.CheckCanDespawn();
         this.Despawn();
@@ -23,9 +23,9 @@ public abstract class Despawner : HuyMonoBehaviour
         this.DespawnObj();
     }
 
-    protected virtual void DespawnObj()
+    protected virtual IEnumerator DespawnObj()
     {
-        if (!this.canDespawn) return;
+        yield return new WaitForSeconds(1);
         Destroy(transform.parent.gameObject);
         Debug.Log(transform.name + ": DespawnObj", transform.gameObject);
     }

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Exp_1
   m_EditorClassIdentifier: 
   speed: 0.05
-  bodyCollideRadius: 0.3
+  bodyCollideRadius: 0.1
   detectZoneRadius: 3
