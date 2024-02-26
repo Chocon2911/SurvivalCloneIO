@@ -63,6 +63,7 @@ public class LevelByTime : HuyMonoBehaviour
 
     protected virtual void CheckLevelUp()
     {
+        if (this.currLevel >= this.levelTimes.Count) return;
         if (this.currTime < this.levelTimes[this.currLevel]) return;
         this.currLevel++;
         Debug.Log(transform.name + ": Level" + currLevel, transform.gameObject);

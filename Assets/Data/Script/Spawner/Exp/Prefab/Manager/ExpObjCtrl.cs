@@ -7,8 +7,14 @@ public class ExpObjCtrl : HuyMonoBehaviour
     [SerializeField] protected ExpObjManager expObjManager;
     public ExpObjManager ExpObjManager => expObjManager;
 
+    [Header("Stat")]
     [SerializeField] protected bool isCollide;
     public bool IsCollide => isCollide;
+
+    protected virtual void OnEnable()
+    {
+        this.DefaultStat();
+    }
 
     protected override void LoadComponent()
     {
@@ -35,5 +41,11 @@ public class ExpObjCtrl : HuyMonoBehaviour
                 this.isCollide = true;
             }
         }
+    }
+
+    //===========================================Other Func=========================================
+    protected virtual void DefaultStat()
+    {
+        this.isCollide = false;
     }
 }

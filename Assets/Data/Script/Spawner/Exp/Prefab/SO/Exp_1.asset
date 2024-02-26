@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9825113e0295d346be98c31214a5552, type: 3}
   m_Name: Exp_1
   m_EditorClassIdentifier: 
-  speed: 0.05
+  speed: 0.15
   bodyCollideRadius: 0.1
   detectZoneRadius: 3

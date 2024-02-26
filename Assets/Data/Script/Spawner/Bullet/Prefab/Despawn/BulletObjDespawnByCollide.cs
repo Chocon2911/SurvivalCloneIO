@@ -37,9 +37,8 @@ public class BulletObjDespawnByCollide : Despawner
         this.canDespawn = true;
     }
 
-    protected override IEnumerator DespawnObj()
+    protected override void DespawnObj()
     {
-        yield return new WaitForSeconds(1);
         BulletSpawner.Instance.DespawnObj(transform.parent);
         Debug.Log(transform.name + ": DespawnObj", transform.gameObject);
     }

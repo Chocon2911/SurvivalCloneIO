@@ -67,6 +67,8 @@ public class ExpObjFollowTarget : FollowTranslate
         this.speed = this.expObjManager.ExpObjSO.Speed;
         this.detectZone.isTrigger = true;
         this.detectZone.radius = this.expObjManager.ExpObjSO.DetectZoneRadius;
+        this.target = null;
+        this.isCollide = false;
     }
 
     //============================================Collide==========================================

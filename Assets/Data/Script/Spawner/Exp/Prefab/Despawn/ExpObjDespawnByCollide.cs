@@ -27,9 +27,8 @@ public class ExpObjDespawnByCollide : Despawner
         this.canDespawn = this.expObjManager.ExpObjCtrl.IsCollide;
     }
 
-    protected override IEnumerator DespawnObj()
+    protected override void DespawnObj()
     {
-        yield return new WaitForSeconds(1);
         ExpSpawner.Instance.DespawnObj(transform.parent);
         Debug.Log(transform.name + ": DespawnObj", transform.gameObject);
     }

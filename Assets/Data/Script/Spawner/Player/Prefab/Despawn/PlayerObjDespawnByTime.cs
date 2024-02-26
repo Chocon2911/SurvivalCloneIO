@@ -21,9 +21,8 @@ public class PlayerObjDespawnByTime : DespawnByTime
         Debug.Log(transform.name + ": LoadPlayerObjManager", transform.gameObject);
     }
 
-    protected override IEnumerator DespawnObj()
+    protected override void DespawnObj()
     {
-        yield return new WaitForSeconds(1);
         PlayerSpawner.Instance.DespawnObj(transform.parent);
         Debug.Log(transform.name + ": DespawnObj", transform.gameObject);
     }

@@ -27,9 +27,8 @@ public class EnemyObjDespawnByHealth : Despawner
         this.canDespawn = this.enemyObjManager.DamageReceiver.IsDeath;
     }
 
-    protected override IEnumerator DespawnObj()
+    protected override void DespawnObj()
     {
-        yield return new WaitForSeconds(1);
         EnemySpawner.Instance.DespawnObj(transform.parent);
         Debug.Log(transform.name + ": DespawnObj", transform.gameObject);
     }
