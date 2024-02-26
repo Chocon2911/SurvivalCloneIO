@@ -79,6 +79,7 @@ public class PlayerObjShoot : HuyMonoBehaviour
 
         Transform newBullet = BulletSpawner.Instance.Spawn(BulletSpawner.Instance.BulletOne, spawnPos, spawnRot);
         if (newBullet == null) Debug.LogError(transform.name + ": newBullet is null", transform.gameObject);
+        this.playerObjManager.StatSender.SendStat(newBullet);
         newBullet.gameObject.SetActive(true);
     }
 

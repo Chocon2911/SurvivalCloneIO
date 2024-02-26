@@ -7,7 +7,7 @@ public class CameraFollowPlayer : FollowTranslate
     [SerializeField] protected CameraManager cameraManager;
     public CameraManager CameraManager => cameraManager;
 
-    protected override void FixedUpdate()
+    protected void LateUpdate()
     {
         this.FollowTarget(this.GetPlayersMidPos());
     }

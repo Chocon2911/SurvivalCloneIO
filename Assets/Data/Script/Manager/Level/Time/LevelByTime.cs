@@ -82,6 +82,7 @@ public class LevelByTime : HuyMonoBehaviour
     {
         if (this.levelManager == null) Debug.LogError(transform.name + ": No levelManager", transform.gameObject);
         if (this.levelManager.LevelSO.EnemySpawnAmountByLevel.Count != this.levelManager.LevelSO.LevelTimes.Count) Debug.LogError(transform.name + ": EnemySpawnAmountByLevel must equal levelTimes", transform.gameObject);
+        if (this.currLevel >= this.levelManager.LevelSO.EnemySpawnAmountByLevel.Count) return;
         this.enemySpawnAmount = this.levelManager.LevelSO.EnemySpawnAmountByLevel[this.currLevel];
     }
 }

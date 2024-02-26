@@ -6,7 +6,6 @@ using UnityEngine;
 public class ExpSender : HuyMonoBehaviour
 {
     [SerializeField] protected ExpSenderSO expSenderSO;
-    public ExpSenderSO ExpSenderSO => expSenderSO;
 
     protected ExpReceiver expReceiver;
 

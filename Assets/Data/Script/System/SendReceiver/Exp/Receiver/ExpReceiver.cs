@@ -7,7 +7,7 @@ public class ExpReceiver : HuyMonoBehaviour
     [SerializeField] protected ExpReceiverSO expReceiverSO;
     public ExpReceiverSO ExpReceiverSO => expReceiverSO;
 
-    [Header("Stat")]
+    [Header("Level")]
     [SerializeField] protected int currExpAmount;
     public int CurrExpAmount => currExpAmount;
 

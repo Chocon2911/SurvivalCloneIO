@@ -15,6 +15,7 @@ public class DamageReceiver : HuyMonoBehaviour
     {
         this.DefaultStat();
     }
+
     //=======================================Checker===============================================
     protected virtual void CheckIsDeath()
     {

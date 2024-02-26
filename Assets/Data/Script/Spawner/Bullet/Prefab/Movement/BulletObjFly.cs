@@ -9,15 +9,15 @@ public class BulletObjFly : StraightFly
 
     protected virtual void OnEnable()
     {
+        this.DefaultStat();
         this.Fly(transform.parent.eulerAngles.z, this.bulletObjManager.Rb);
-        this.BaseFlySpeed();
     }
 
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadBulletObjManager();
-        this.BaseFlySpeed();
+        this.DefaultStat();
     }
 
     //=======================================Load Component========================================
@@ -28,17 +28,14 @@ public class BulletObjFly : StraightFly
         Debug.Log(transform.name + ": LoadBulletObjManager");
     }
 
-    protected virtual void BaseFlySpeed()
+    //======================================Other Func=============================================
+    protected virtual void DefaultStat()
     {
-        this.flySpeed = this.bulletObjManager.BulletObjSO.MoveSpeed;
-        Debug.Log(transform.name + ": BaseFLySpeed", transform.gameObject);
-    }
+        if (this.bulletObjManager == null) Debug.LogError(transform.name + ": No BulletObjManager", transform.gameObject);
 
-    //==========================================public=============================================
-    public void LevelUp(float index)
-    {
-        this.flySpeed += index;
-        Debug.Log(transform.name + ": flySpeed " + index, transform.gameObject);
-        this.Fly(transform.parent.eulerAngles.z, this.bulletObjManager.Rb);
+        //flySpeed
+        float moveSpeed = this.bulletObjManager.BulletObjSO.MoveSpeed;
+        float additionalMoveSpeed = this.bulletObjManager.StatReceiver.AdditionalMoveSpeed;
+        this.flySpeed = moveSpeed + additionalMoveSpeed;
     }
 }
