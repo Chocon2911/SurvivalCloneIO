@@ -21,6 +21,20 @@ public class EffectSender : HuyMonoBehaviour
     [SerializeField] protected float additionalDamageTime;
     public float AdditionalDamageTime => additionalDamageTime;
 
+    [Header("Multiplier Damage")]
+    [SerializeField] protected float damageMultiplier;
+    public float DamageMultiplier => damageMultiplier;
+
+    [SerializeField] protected float damageMultiplierTime;
+    public float DamageMultiplierTime => damageMultiplierTime;
+
+    [Header("Multiplier Attack Speed")]
+    [SerializeField] protected float attackSpeedMultiplier;
+    public float AttackSpeedMultiplier => attackSpeedMultiplier;
+
+    [SerializeField] protected float attackSpeedMultiplierTime;
+    public float AttackSpeedMultiplierTime => attackSpeedMultiplierTime;
+
     protected virtual void OnEnable()
     {
         this.DefaultStat();
@@ -49,5 +63,13 @@ public class EffectSender : HuyMonoBehaviour
         //Additional Damage
         this.additionalDamage = this.effectSenderSO.AdditionalDamage;
         this.additionalDamageTime = this.effectSenderSO.AdditionalDamageTime;
+
+        //Multiplier Damage
+        this.damageMultiplier = this.effectSenderSO.DamageMultiplier;
+        this.damageMultiplierTime = this.effectSenderSO.DamageMultiplierTime;
+
+        //Multiplier Attack Speed
+        this.attackSpeedMultiplier = this.effectSenderSO.AttackSpeedMultiplier;
+        this.attackSpeedMultiplierTime = this.effectSenderSO.AttackSpeedMultiplierTime;
     }
 }

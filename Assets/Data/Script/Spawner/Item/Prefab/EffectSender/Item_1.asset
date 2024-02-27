@@ -9,9 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0183b3245a1a0f0408d564e88781a561, type: 3}
-  m_Name: EnemySpawn_1
+  m_Script: {fileID: 11500000, guid: 53299a235839bea468b29e1092724512, type: 3}
+  m_Name: Item_1
   m_EditorClassIdentifier: 
-  cooldown: 10
-  maxEnemy: 50
-  followCameraSpeed: 1
+  canSendTags:
+  - Player
+  additionalDamage: 0
+  additionalDamageTime: 0
+  damageMultiplier: 2
+  damageMultiplierTime: 30
+  attackSpeedMultiplier: 2
+  attackSpeedMultiplierTime: 30

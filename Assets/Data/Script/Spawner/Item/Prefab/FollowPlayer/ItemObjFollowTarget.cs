@@ -77,5 +77,7 @@ public class ItemObjFollowTarget : FollowTranslate
     {
         if (this.ItemObjManager == null) Debug.LogError(transform.name + ": no ItemObjManager", transform.gameObject);
         this.isCollide = false;
+        this.canPickTags = this.itemObjManager.EffectSender.CanSendTags;
+        this.targetPos = Vector3.zero;
     }
 }
