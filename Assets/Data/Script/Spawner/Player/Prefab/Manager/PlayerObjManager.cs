@@ -24,6 +24,9 @@ public class PlayerObjManager : HuyMonoBehaviour
     [SerializeField] protected StatSender statSender;
     public StatSender StatSender => statSender;
 
+    [SerializeField] protected PlayerObjStat playerObjStat;
+    public PlayerObjStat PlayerObjStat => playerObjStat;
+
     [SerializeField] protected Rigidbody2D rb;
     public Rigidbody2D Rb => rb;
 
@@ -42,6 +45,7 @@ public class PlayerObjManager : HuyMonoBehaviour
         this.LoadDespawnByHealth();
         this.LoadDamageReceiver();
         this.LoadStatSender();
+        this.LoadPlayerObjStat();
         this.LoadRigidbody();
         this.LoadBodyCollide();
     }
@@ -87,6 +91,13 @@ public class PlayerObjManager : HuyMonoBehaviour
         if (this.statSender != null) return;
         this.statSender = transform.Find("StatSender").GetComponent<StatSender>();
         Debug.Log(transform.name + ": StatSender", transform.gameObject);
+    }
+
+    protected virtual void LoadPlayerObjStat()
+    {
+        if (this.playerObjStat != null) return;
+        this.playerObjStat = transform.Find("Stat").GetComponent<PlayerObjStat>();
+        Debug.Log(transform.name + ": LoadPlayerObjStat", transform.gameObject);
     }
 
     protected virtual void LoadRigidbody()

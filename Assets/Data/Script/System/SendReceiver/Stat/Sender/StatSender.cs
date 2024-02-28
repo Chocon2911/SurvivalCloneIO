@@ -5,7 +5,6 @@ using UnityEngine;
 public class StatSender : HuyMonoBehaviour
 {
     [SerializeField] protected StatSenderSO statSenderSO;
-    [SerializeField] protected ExpReceiver expReceiver;
 
     [Header("Stat")]
     [SerializeField] protected StatReceiver statReceiver;
@@ -28,21 +27,7 @@ public class StatSender : HuyMonoBehaviour
     protected override void LoadComponent()
     {
         base.LoadComponent();
-        this.LoadExpReceiver();
     }
-
-    protected virtual void FixedUpdate()
-    {
-        this.RaiseAttributeByLevel();
-    }
-
-    //=====================================Load Component==========================================
-    protected virtual void LoadExpReceiver()
-    {
-        if (this.expReceiver != null) return;
-        this.expReceiver = transform.parent.Find("ExpReceiver").GetComponent<ExpReceiver>();
-        Debug.Log(transform.name + ": LoadExpReceiver", transform.gameObject);
-    }    
 
     //=========================================Public==============================================
     public virtual void SendStat(Transform target)
@@ -55,13 +40,6 @@ public class StatSender : HuyMonoBehaviour
         if (this.statReceiver == null) Debug.LogError(": StatReceiver is null", transform.gameObject);
         this.statReceiver.ReceiveStat(this.additionalDamage, this.additionalMoveSpeed);
         this.statReceiver = null;
-    }
-
-    //==========================================Stat===============================================
-    protected virtual void RaiseAttributeByLevel()
-    {
-        this.additionalDamage = this.expReceiver.CurrLevel -1;
-        this.additionalMoveSpeed = this.expReceiver.CurrLevel -1;
     }
 
     //=======================================Other Func============================================
