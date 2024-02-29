@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class PlayerObjStat : CharacterStat
 {
+    [Header("Player")]
     [SerializeField] protected PlayerObjManager playerObjManager;
     public PlayerObjManager PlayerObjManager => playerObjManager;
+
+    [Header("Stat")]
+    [SerializeField] protected bool isDead;
+    public bool IsDead => isDead;
 
     protected virtual void OnEnable()
     {
@@ -16,6 +21,18 @@ public class PlayerObjStat : CharacterStat
     {
         base.LoadComponent();
         this.LoadPlayerObjManager();
+    }
+
+    protected virtual void Update()
+    {
+        this.ChecIsDead();
+    }
+
+    //=========================================Checker==============================================
+    protected virtual void ChecIsDead()
+    {
+        if (this.playerObjManager.PlayerObjStat.health <= 0) isDead = true;
+        else isDead = false;
     }
 
     //======================================Load Component==========================================
@@ -44,5 +61,9 @@ public class PlayerObjStat : CharacterStat
         this.dashSpeed = this.playerObjManager.PlayerObjSO.DashSpeed;
         this.dashCooldown = this.playerObjManager.PlayerObjSO.DashCooldown;
         this.dashInterval = this.playerObjManager.PlayerObjSO.DashInterval;
+
+        //Player
+        //Stat
+        this.isDead = false;
     }
 }

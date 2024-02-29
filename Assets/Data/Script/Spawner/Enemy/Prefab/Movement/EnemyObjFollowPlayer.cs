@@ -7,14 +7,6 @@ public class EnemyObjFollowPlayer : Follower
     [SerializeField] protected EnemyObjManager enemyObjManager;
     public EnemyObjManager EnemyObjManager => enemyObjManager;
 
-    [Header("Stat")]
-    [SerializeField] protected float moveSpeed = 0;
-
-    protected virtual void OnEnable()
-    {
-        this.DefaultStat();
-    }
-
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -43,15 +35,9 @@ public class EnemyObjFollowPlayer : Follower
 
     protected virtual void FollowActivePlayer()
     {
-        float moveSpeed = this.moveSpeed;
+        float moveSpeed = this.enemyObjManager.EnemyObjStat.MoveSpeed;
         Transform closestActivePlayer = this.enemyObjManager.ClosestActivePlayer;
 
         this.enemyObjManager.Rb.velocity = this.Move2TargetVelocity(closestActivePlayer, moveSpeed);
-    }
-
-    //=========================================Default Stat========================================
-    protected virtual void DefaultStat()
-    {
-        this.moveSpeed = this.enemyObjManager.EnemyObjSO.MoveSpeed;
     }
 }

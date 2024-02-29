@@ -31,8 +31,8 @@ public class HealthBarUIManager : HuyMonoBehaviour
     protected virtual void Update()
     {
         if (GameManager.Instance.ActivePlayers.Count == 0) return;
-        DamageReceiver playerDamageReceiver = GameManager.Instance.ActivePlayers[0].Find("DamageReceiver").GetComponent<DamageReceiver>();
-        float health = playerDamageReceiver.Health;
+        PlayerObjStat playerObjStat = GameManager.Instance.ActivePlayers[0].Find("Stat").GetComponent<PlayerObjStat>();
+        float health = playerObjStat.Health;
         this.SetHealth(health);
     }
 

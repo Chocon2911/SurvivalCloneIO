@@ -14,6 +14,12 @@ public class PlayerObjCtrl : HuyMonoBehaviour
         this.LoadPlayerObjManager();
     }
 
+    protected virtual void Update()
+    {
+        this.playerObjManager.PlayerObjStat.AddHealth(-this.playerObjManager.DamageReceiver.DamageTaken);
+        this.playerObjManager.DamageReceiver.SetDamageTaken(0);
+    }
+
     //======================================Load Component=========================================
     protected virtual void LoadPlayerObjManager()
     {

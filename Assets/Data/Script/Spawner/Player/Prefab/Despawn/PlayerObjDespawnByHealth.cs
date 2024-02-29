@@ -30,6 +30,6 @@ public class PlayerObjDespawnByHealth : Despawner
 
     protected override void CheckCanDespawn()
     {
-        this.canDespawn = this.playerObjManager.DamageReceiver.IsDeath;
+        this.canDespawn = this.playerObjManager.PlayerObjStat.IsDead;
     }
 }

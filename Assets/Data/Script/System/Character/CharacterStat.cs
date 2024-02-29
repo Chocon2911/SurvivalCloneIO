@@ -40,7 +40,6 @@ public abstract class CharacterStat : HuyMonoBehaviour
     public virtual void AddHealth(float health)
     {
         this.health += health;
-        Debug.Log(transform.name + ": AddHealth", transform.gameObject);
     }
 
     public virtual void AddHealthMultiplier(float healthMultiplier)
@@ -214,6 +213,31 @@ public abstract class CharacterStat : HuyMonoBehaviour
         Debug.Log(transform.name + ": AddDashInterval", transform.gameObject);
     }
 
+    //DashCooldown
+    public virtual void AddDashCooldown(float dashCooldown)
+    {
+        this.dashCooldown += dashCooldown;
+        Debug.Log(transform.name + ": AddDashCooldown", transform.gameObject);
+    }
+    public virtual void AddDashCooldown(float dashCooldown, float time)
+    {
+        if (time <= 0) Debug.LogError(transform.name + ": Wrong time value", transform.gameObject);
+        StartCoroutine(this.AddDashCooldownTime(dashCooldown, time));
+        Debug.Log(transform.name + ": AddDashCooldown", transform.gameObject);
+    }
+
+    public virtual void AddDashCooldownMultiplier(float dashCooldownMultiplier)
+    {
+        this.dashCooldown *= dashCooldownMultiplier;
+        Debug.Log(transform.name + ": AddDashCooldownMultiplier", transform.gameObject);
+    }
+    public virtual void AddDashCooldownMultiplier(float dashCooldownMultiplier, float time)
+    {
+        if (time <= 0) Debug.LogError(transform.name + ": Wrong time value", transform.gameObject);
+        StartCoroutine(this.AddDashCooldownMultiplierTime(dashCooldownMultiplier, time));
+        Debug.Log(transform.name + ": AddDashCooldownMultiplier", transform.gameObject);
+    }
+
     //========================================Stat Time=============================================
     //==========================================Stat================================================
     //MaxHealth
@@ -305,5 +329,19 @@ public abstract class CharacterStat : HuyMonoBehaviour
         this.dashSpeed *= dashSpeedMultiplier;
         yield return new WaitForSeconds(time);
         this.dashSpeed /= dashSpeedMultiplier;
+    }
+
+    //DashCooldown
+    protected virtual IEnumerator AddDashCooldownTime(float dashCooldown, float time)
+    {
+        this.dashCooldown += dashCooldown;
+        yield return new WaitForSeconds(time);
+        this.dashCooldown -= dashCooldown;
+    }
+    protected virtual IEnumerator AddDashCooldownMultiplierTime(float dashCooldown, float time)
+    {
+        this.dashCooldown *= dashCooldown;
+        yield return new WaitForSeconds(time);
+        this.dashCooldown /= dashCooldown;
     }
 }

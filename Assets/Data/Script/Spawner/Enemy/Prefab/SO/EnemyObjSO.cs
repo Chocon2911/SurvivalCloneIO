@@ -9,7 +9,8 @@ public class EnemyObjSO : ScriptableObject
     [SerializeField] protected float moveSpeed = 1f; public float MoveSpeed => moveSpeed;
 
 
-    [Header("Shoot")]
+    [Header("Attack")]
+    [SerializeField] protected float damage = 1f; public float Damage => damage;
     [SerializeField] protected float shootCooldown = 0.5f; public float ShootCooldown => shootCooldown;
     [SerializeField] protected float shootCharge = 0f; public float ShootCharge => shootCharge;
 

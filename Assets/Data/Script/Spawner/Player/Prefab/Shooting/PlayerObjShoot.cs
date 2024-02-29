@@ -7,12 +7,11 @@ public class PlayerObjShoot : HuyMonoBehaviour
     [SerializeField] protected PlayerObjManager playerObjManager;
     public PlayerObjManager PlayerObjManager => playerObjManager;
 
+    [Header("Stat")]
     [SerializeField] protected float radius = 1f;
 
-    [Header("Stat")]
-    [SerializeField] protected float shootCoolDown;
+
     [SerializeField] protected float shootCoolDownTimer;
-    [SerializeField] protected float shootCharge;
     [SerializeField] protected float shootChargeTimer;
 
     [SerializeField] protected bool canShoot = false;
@@ -25,11 +24,6 @@ public class PlayerObjShoot : HuyMonoBehaviour
     {
         base.LoadComponent();
         this.LoadPlayerManager();
-    }
-
-    protected virtual void OnEnable()
-    {
-        this.BaseStat();
     }
 
     protected virtual void Update()
@@ -50,14 +44,16 @@ public class PlayerObjShoot : HuyMonoBehaviour
     //==========================================Check=============================================
     protected virtual void CheckCanShoot()
     {
-        if (this.shootCoolDownTimer < this.shootCoolDown && !this.isShooting) this.shootCoolDownTimer += Time.deltaTime;
-        this.canShoot = this.shootCoolDownTimer >= this.shootCoolDown;
+        float shootCoolDown = this.playerObjManager.PlayerObjStat.AttackCooldown;
+        if (this.shootCoolDownTimer < shootCoolDown && !this.isShooting) this.shootCoolDownTimer += Time.deltaTime;
+        this.canShoot = this.shootCoolDownTimer >= shootCoolDown;
     }
 
     protected virtual void CheckIsShooting()
     {
-        if (this.shootChargeTimer < this.shootCharge) this.shootChargeTimer += Time.deltaTime;
-        this.isShooting = this.shootChargeTimer < this.shootCharge;
+        float shootCharge = this.playerObjManager.PlayerObjStat.AttackCharge;
+        if (this.shootChargeTimer < shootCharge) this.shootChargeTimer += Time.deltaTime;
+        this.isShooting = this.shootChargeTimer < shootCharge;
     }
 
     //==========================================Shoot==============================================
@@ -72,7 +68,8 @@ public class PlayerObjShoot : HuyMonoBehaviour
     {
         this.shootCoolDownTimer = 0f;
         this.shootChargeTimer = 0f;
-        yield return new WaitForSeconds(this.shootCharge);
+        float shootCharge = this.playerObjManager.PlayerObjStat.AttackCharge;
+        yield return new WaitForSeconds(shootCharge);
 
         Vector2 spawnPos = this.SpawnPos();
         Quaternion spawnRot = this.SpawnRot();
@@ -102,14 +99,6 @@ public class PlayerObjShoot : HuyMonoBehaviour
     }
 
     //=========================================Other Func==========================================
-    protected virtual void BaseStat()
-    {
-        this.shootCoolDown = this.playerObjManager.PlayerObjSO.AttackCooldown;
-        this.shootCharge = this.playerObjManager.PlayerObjSO.AttackCharge;
-        this.shootCoolDownTimer = this.shootCoolDown;
-        this.shootChargeTimer = this.shootCharge;
-    }
-
     protected virtual Vector2 GetDir(Vector2 startPoint, Vector2 endPoint)
     {
         Vector2 dir = endPoint - startPoint;

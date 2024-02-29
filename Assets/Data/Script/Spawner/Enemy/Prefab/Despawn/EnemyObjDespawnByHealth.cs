@@ -24,7 +24,7 @@ public class EnemyObjDespawnByHealth : Despawner
     //======================================Despawner==============================================
     protected override void CheckCanDespawn()
     {
-        this.canDespawn = this.enemyObjManager.DamageReceiver.IsDeath;
+        this.canDespawn = this.enemyObjManager.EnemyObjDropExp.IsDropped;
     }
 
     protected override void DespawnObj()

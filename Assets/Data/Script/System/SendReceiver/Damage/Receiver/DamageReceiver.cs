@@ -5,38 +5,30 @@ using UnityEngine;
 
 public class DamageReceiver : HuyMonoBehaviour
 {
-    [SerializeField] protected DamageReceiverSO damageReceiverSO;
-
     [Header("Stat")]
-    [SerializeField] protected float health; public float Health => health;
-    [SerializeField] protected bool isDeath; public bool IsDeath => isDeath;
+    [SerializeField] protected float damageTaken; public float DamageTaken => damageTaken;
 
     protected virtual void OnEnable()
     {
         this.DefaultStat();
     }
 
-    //=======================================Checker===============================================
-    protected virtual void CheckIsDeath()
+    //========================================Damage===============================================
+    public virtual void AddDamageTaken(float damage)
     {
-        if (this.health > 0) return;
-        this.isDeath = true;
+        this.damageTaken += damage;
+        Debug.Log(transform.name + ": Get " + damage + "damage", transform.gameObject);
     }
 
-    //========================================Damage===============================================
-    public virtual void DeduceHealth(float damage)
+    //========================================public===============================================
+    public virtual void SetDamageTaken(float damageTaken)
     {
-        if (this.isDeath) return;
-        this.health -= damage;
-        this.CheckIsDeath();
-        Debug.Log(transform.name + ": " + this.health + "hp left", transform.gameObject);
+        this.damageTaken = damageTaken;
     }
 
     //======================================Other Func=============================================
     protected virtual void DefaultStat()
     {
-        if (this.damageReceiverSO == null) Debug.LogError(transform.name + ": damageReceiverSO is null", transform.gameObject);
-        this.health = this.damageReceiverSO.MaxHealth;
-        this.isDeath = false;
+        this.damageTaken = 0;
     }
 }

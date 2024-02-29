@@ -38,7 +38,7 @@ public class DamageSender : HuyMonoBehaviour
     {
         this.LoadDamageReceiver(targetTrans);
         if (this.damageReceiver == null) Debug.LogError(transform.name + "Can't find damgeReceiver", transform.gameObject);
-        this.damageReceiver.DeduceHealth(this.damage);
+        this.damageReceiver.AddDamageTaken(this.damage);
         this.damageReceiver = null;
         Debug.Log(transform.name, transform.gameObject);
     }

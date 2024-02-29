@@ -18,6 +18,12 @@ public class EnemyObjManager : HuyMonoBehaviour
     [SerializeField] protected EnemyObjFollowPlayer followPlayer;
     public EnemyObjFollowPlayer FollowPlayer => followPlayer;
 
+    [SerializeField] protected EnemyObjStat enemyObjStat;
+    public EnemyObjStat EnemyObjStat => enemyObjStat;
+
+    [SerializeField] protected EnemyObjDropExp enemyObjDropExp;
+    public EnemyObjDropExp EnemyObjDropExp => enemyObjDropExp;
+
     [SerializeField] protected Rigidbody2D rb;
     public Rigidbody2D Rb => rb;
 
@@ -37,6 +43,8 @@ public class EnemyObjManager : HuyMonoBehaviour
         this.LoadEnemyObjShoot();
         this.LoadDespawnByHealth();
         this.LoadFollowPlayer();
+        this.LoadEnemyObjStat();
+        this.LoadEnemyObjDropExp();
         this.LoadRigidbody();
         this.LoadBodyCollider();
     }
@@ -94,6 +102,20 @@ public class EnemyObjManager : HuyMonoBehaviour
         if (this.followPlayer != null) return;
         this.followPlayer = transform.Find("Movement").GetComponent<EnemyObjFollowPlayer>();
         Debug.Log(transform.name + ": LoadFollowPlayer", transform.gameObject);
+    }
+
+    protected virtual void LoadEnemyObjStat()
+    {
+        if (this.enemyObjStat != null) return;
+        this.enemyObjStat = transform.Find("Stat").GetComponent<EnemyObjStat>();
+        Debug.Log(transform.name + ": LoadEnemyObjStat", transform.gameObject);
+    }
+
+    protected virtual void LoadEnemyObjDropExp()
+    {
+        if (this.enemyObjDropExp != null) return;
+        this.enemyObjDropExp = transform.Find("DropExp").GetComponent<EnemyObjDropExp>();
+        Debug.Log(transform.name + ": LoadEnemyObjDropExp", transform.gameObject);
     }
 
     //========================================Reset Value==========================================

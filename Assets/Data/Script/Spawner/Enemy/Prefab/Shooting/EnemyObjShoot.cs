@@ -12,9 +12,7 @@ public class EnemyObjShoot : HuyMonoBehaviour
 
     [Header("Stat")]
     [SerializeField] protected float shootPointRadius = 1f;
-    [SerializeField] protected float shootCooldown;
     [SerializeField] protected float shootCooldownTimer;
-    [SerializeField] protected float shootCharge;
     [SerializeField] protected float shootChargeTimer;
     [SerializeField] protected bool canShoot; public bool CanShoot => canShoot;
     [SerializeField] protected bool isShooting; public bool IsShooting => isShooting;
@@ -57,15 +55,17 @@ public class EnemyObjShoot : HuyMonoBehaviour
     //=====================================Check Bool==============================================
     protected virtual bool CheckCanShoot()
     {
-        if (this.shootCooldownTimer < this.shootCooldown && !this.isShooting) this.shootCooldownTimer += Time.deltaTime;
-        this.canShoot = this.shootCooldownTimer >= this.shootCooldown;
+        float shootCooldown = this.enemyObjManager.EnemyObjStat.AttackCooldown;
+        if (this.shootCooldownTimer < shootCooldown && !this.isShooting) this.shootCooldownTimer += Time.deltaTime;
+        this.canShoot = this.shootCooldownTimer >= shootCooldown;
         return this.canShoot;
     }
 
     protected virtual bool CheckIsShooting()
     {
-        if (this.shootChargeTimer < this.shootCharge) this.shootChargeTimer += Time.deltaTime;
-        this.isShooting = this.shootChargeTimer < this.shootCharge;
+        float shootCharge = this.enemyObjManager.EnemyObjStat.AttackCharge;
+        if (this.shootChargeTimer < shootCharge) this.shootChargeTimer += Time.deltaTime;
+        this.isShooting = this.shootChargeTimer < shootCharge;
         return this.isShooting;
     }
 
@@ -80,7 +80,8 @@ public class EnemyObjShoot : HuyMonoBehaviour
     {
         this.shootChargeTimer = 0;
         this.shootCooldownTimer = 0;
-        yield return new WaitForSeconds(this.shootCharge);
+        float shootCharge = this.enemyObjManager.EnemyObjStat.AttackCharge;
+        yield return new WaitForSeconds(shootCharge);
 
         Transform newPrefab = BulletSpawner.Instance.Spawn(BulletSpawner.Instance.BulletTwo, this.SpawnPos(), this.SpawnRot());
         if (newPrefab == null) yield break;
@@ -108,8 +109,6 @@ public class EnemyObjShoot : HuyMonoBehaviour
     //======================================Default Stat===========================================
     protected virtual void DefaultStat()
     {
-        this.shootCooldown = this.enemyObjManager.EnemyObjSO.ShootCooldown;
-        this.shootCharge = this.enemyObjManager.EnemyObjSO.ShootCharge;
         this.shootPointRadius = this.shootRange.radius;
     }
 
