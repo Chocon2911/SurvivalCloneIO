@@ -84,9 +84,13 @@ public class EnemyObjShoot : HuyMonoBehaviour
         yield return new WaitForSeconds(shootCharge);
 
         Transform newPrefab = BulletSpawner.Instance.Spawn(BulletSpawner.Instance.BulletTwo, this.SpawnPos(), this.SpawnRot());
-        if (newPrefab == null) yield break;
+        if (newPrefab == null)
+        {
+            Debug.LogError(transform.name + ": newBullet is null", transform.gameObject);
+            yield break;
+        }
+        this.enemyObjManager.StatSender.SendStat(newPrefab);
         newPrefab.gameObject.SetActive(true);
-        Debug.Log(transform.name + ": Shooting", transform.gameObject);
     }
 
     //=========================================Spawn===============================================
@@ -109,7 +113,7 @@ public class EnemyObjShoot : HuyMonoBehaviour
     //======================================Default Stat===========================================
     protected virtual void DefaultStat()
     {
-        this.shootPointRadius = this.shootRange.radius;
+        this.shootRange.radius = this.enemyObjManager.EnemyObjStat.ShootPosRadius;
     }
 
     //========================================Other Func===========================================

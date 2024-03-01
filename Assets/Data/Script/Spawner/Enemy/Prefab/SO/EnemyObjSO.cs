@@ -16,4 +16,7 @@ public class EnemyObjSO : ScriptableObject
 
     [Header("Health")]
     [SerializeField] protected float health = 3f; public float Health => health;
+
+    [Header("Attack Range")]
+    [SerializeField] protected float shootPosRadius; public float ShootPosRadius => shootPosRadius;
 }

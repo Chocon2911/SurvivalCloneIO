@@ -22,6 +22,12 @@ public class BulletObjCtrl : HuyMonoBehaviour
         Debug.Log(transform.name + ": LoadBulletObjManager", transform.gameObject);
     }
 
+    //========================================Update===============================================
+    protected virtual void StatDamage()
+    {
+        //Continue...
+    }
+
     //========================================Collide==============================================
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {

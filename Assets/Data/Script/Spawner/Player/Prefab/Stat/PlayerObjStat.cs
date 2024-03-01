@@ -25,11 +25,11 @@ public class PlayerObjStat : CharacterStat
 
     protected virtual void Update()
     {
-        this.ChecIsDead();
+        this.CheckIsDead();
     }
 
     //=========================================Checker==============================================
-    protected virtual void ChecIsDead()
+    protected virtual void CheckIsDead()
     {
         if (this.playerObjManager.PlayerObjStat.health <= 0) isDead = true;
         else isDead = false;

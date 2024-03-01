@@ -75,7 +75,11 @@ public class PlayerObjShoot : HuyMonoBehaviour
         Quaternion spawnRot = this.SpawnRot();
 
         Transform newBullet = BulletSpawner.Instance.Spawn(BulletSpawner.Instance.BulletOne, spawnPos, spawnRot);
-        if (newBullet == null) Debug.LogError(transform.name + ": newBullet is null", transform.gameObject);
+        if (newBullet == null)
+        {
+            Debug.LogError(transform.name + ": newBullet is null", transform.gameObject);
+            yield break;
+        }
         this.playerObjManager.StatSender.SendStat(newBullet);
         newBullet.gameObject.SetActive(true);
     }

@@ -63,7 +63,6 @@ public abstract class Spawner : HuyMonoBehaviour
     {
         prefab.gameObject.SetActive(false);
         this.holders.Add(prefab);
-        Debug.Log(transform.name + ": DespawnObj", transform.gameObject);
     }
 
     //==================================Other Func=================================================
@@ -93,12 +92,10 @@ public abstract class Spawner : HuyMonoBehaviour
             if (obj.name == prefab.name + "(Clone)")
             {
                 this.holders.Remove(obj);
-                Debug.Log("Get obj from pool", transform.gameObject);
                 return obj;
             }
         }
         Transform newPrefab = Instantiate(prefab);
-        Debug.Log("Clone new obj", transform.gameObject);
         return newPrefab;
     }
 }

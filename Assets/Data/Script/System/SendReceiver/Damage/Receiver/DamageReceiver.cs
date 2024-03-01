@@ -6,7 +6,7 @@ using UnityEngine;
 public class DamageReceiver : HuyMonoBehaviour
 {
     [Header("Stat")]
-    [SerializeField] protected float damageTaken; public float DamageTaken => damageTaken;
+    [SerializeField] public float damageTaken; public float DamageTaken => damageTaken;
 
     protected virtual void OnEnable()
     {

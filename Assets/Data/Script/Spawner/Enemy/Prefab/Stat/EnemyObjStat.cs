@@ -8,6 +8,10 @@ public class EnemyObjStat : CharacterStat
     [SerializeField] protected EnemyObjManager enemyObjManager;
     public EnemyObjManager EnemyObjManager => enemyObjManager;
 
+    [Header("Shoot Range")]
+    [SerializeField] protected float shootPosRadius;
+    public float ShootPosRadius => shootPosRadius;
+
     [Header("Stat")]
     [SerializeField] protected bool isDead;
     public bool IsDead => isDead;
@@ -65,6 +69,9 @@ public class EnemyObjStat : CharacterStat
         this.dashSpeed = 0;
 
         //Enemy
+        //Attack Range
+        this.shootPosRadius = this.enemyObjManager.EnemyObjSO.ShootPosRadius;
+
         //Stat
         this.isDead = false;
     }

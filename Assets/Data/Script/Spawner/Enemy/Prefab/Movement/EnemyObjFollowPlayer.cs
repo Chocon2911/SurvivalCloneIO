@@ -16,6 +16,10 @@ public class EnemyObjFollowPlayer : Follower
     protected override void Update()
     {
         base.Update();
+    }
+
+    protected virtual void LateUpdate()
+    {
         this.FollowActivePlayer();
     }
 

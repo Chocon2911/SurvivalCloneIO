@@ -13,11 +13,11 @@ public class StatSender : HuyMonoBehaviour
     public List<string> CanSendTags => canSendTags;
 
     [Header("Additional")]
-    [SerializeField] protected float additionalDamage;
-    public float AdditionalDamage => additionalDamage;
+    [SerializeField] protected float damage;
+    public float Damage => damage;
 
-    [SerializeField] protected float additionalMoveSpeed;
-    public float AdditionalMoveSpeed => additionalMoveSpeed;
+    [SerializeField] protected float moveSpeed;
+    public float MoveSpeed => moveSpeed;
 
     protected virtual void OnEnable()
     {
@@ -38,8 +38,18 @@ public class StatSender : HuyMonoBehaviour
         }
 
         if (this.statReceiver == null) Debug.LogError(": StatReceiver is null", transform.gameObject);
-        this.statReceiver.ReceiveStat(this.additionalDamage, this.additionalMoveSpeed);
+        this.statReceiver.ReceiveStat(this.damage, this.moveSpeed);
         this.statReceiver = null;
+    }
+
+    public virtual void SetDamage(float damage)
+    {
+        this.damage = damage;
+    }
+    
+    public virtual void SetMoveSpeed(float moveSpeed)
+    {
+        this.moveSpeed = moveSpeed;
     }
 
     //=======================================Other Func============================================
@@ -48,8 +58,6 @@ public class StatSender : HuyMonoBehaviour
         if (this.statSenderSO == null) Debug.LogError(transform.name + ": No StatSenderSO", transform.gameObject);
         this.canSendTags = this.statSenderSO.CanSendTags;
         this.statReceiver = null;
-        this.additionalDamage = this.statSenderSO.AdditionalDamage;
-        this.additionalMoveSpeed = this.statSenderSO.AdditionalMoveSpeed;
     }
 
     protected virtual void LoadStatReceiver(Transform target)

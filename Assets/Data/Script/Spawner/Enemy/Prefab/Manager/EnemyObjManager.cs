@@ -6,6 +6,9 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class EnemyObjManager : HuyMonoBehaviour
 {
+    [SerializeField] protected EnemyObjCtrl enemyObjCtrl;
+    public EnemyObjCtrl EnemyObjCtrl => enemyObjCtrl;
+
     [SerializeField] protected DamageReceiver damageReceiver;
     public DamageReceiver DamageReceiver => damageReceiver;
 
@@ -24,6 +27,9 @@ public class EnemyObjManager : HuyMonoBehaviour
     [SerializeField] protected EnemyObjDropExp enemyObjDropExp;
     public EnemyObjDropExp EnemyObjDropExp => enemyObjDropExp;
 
+    [SerializeField] protected StatSender statSender;
+    public StatSender StatSender => statSender;
+
     [SerializeField] protected Rigidbody2D rb;
     public Rigidbody2D Rb => rb;
 
@@ -39,12 +45,14 @@ public class EnemyObjManager : HuyMonoBehaviour
     protected override void LoadComponent()
     {
         base.LoadComponent();
+        this.LoadEnemyObjCtrl();
         this.LoadDamageReceiver();
         this.LoadEnemyObjShoot();
         this.LoadDespawnByHealth();
         this.LoadFollowPlayer();
         this.LoadEnemyObjStat();
         this.LoadEnemyObjDropExp();
+        this.LoadStatSender();
         this.LoadRigidbody();
         this.LoadBodyCollider();
     }
@@ -74,6 +82,13 @@ public class EnemyObjManager : HuyMonoBehaviour
         if (this.bodyCollider != null) return;
         this.bodyCollider = transform.GetComponent<BoxCollider2D>();
         Debug.Log(transform.name + ": LoadBodyCollider", transform.gameObject);
+    }
+
+    protected virtual void LoadEnemyObjCtrl()
+    {
+        if (this.enemyObjCtrl != null) return;
+        this.enemyObjCtrl = transform.GetComponent<EnemyObjCtrl>();
+        Debug.Log(transform.name + ": LoadEnemyObjCtrl", transform.gameObject);
     }
 
     protected virtual void LoadDamageReceiver()
@@ -116,6 +131,13 @@ public class EnemyObjManager : HuyMonoBehaviour
         if (this.enemyObjDropExp != null) return;
         this.enemyObjDropExp = transform.Find("DropExp").GetComponent<EnemyObjDropExp>();
         Debug.Log(transform.name + ": LoadEnemyObjDropExp", transform.gameObject);
+    }
+
+    protected virtual void LoadStatSender()
+    {
+        if (this.statSender != null) return;
+        this.statSender = transform.Find("StatSender").GetComponent<StatSender>();
+        Debug.Log(transform.name + ": LoadStatSender", transform.gameObject);
     }
 
     //========================================Reset Value==========================================
