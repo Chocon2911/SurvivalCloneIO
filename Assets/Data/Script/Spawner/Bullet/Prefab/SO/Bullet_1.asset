@@ -15,4 +15,4 @@ MonoBehaviour:
   moveSpeed: 15
   damage: 1
   existTime: 10
-  maxDistance: 50
+  maxDistance: 30

@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class StatReceiver : HuyMonoBehaviour
 {
-    [Header("Stat")]
-    [SerializeField] protected List<string> canSendTags = new List<string>();
-    public List<string> CanSendTags => canSendTags;
-
     [Header("Additional")]
     [SerializeField] protected float additionalDamage;
     public float AdditionalDamage => additionalDamage;

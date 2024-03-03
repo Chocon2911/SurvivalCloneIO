@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class StatSender : HuyMonoBehaviour
 {
-    [SerializeField] protected StatSenderSO statSenderSO;
-
     [Header("Stat")]
     [SerializeField] protected StatReceiver statReceiver;
-
-    [SerializeField] protected List<string> canSendTags;
-    public List<string> CanSendTags => canSendTags;
 
     [Header("Additional")]
     [SerializeField] protected float damage;
@@ -32,11 +27,7 @@ public class StatSender : HuyMonoBehaviour
     //=========================================Public==============================================
     public virtual void SendStat(Transform target)
     {
-        foreach (string tag in this.canSendTags)
-        {
-            if (target.gameObject.tag == tag) this.LoadStatReceiver(target);
-        }
-
+        this.LoadStatReceiver(target);
         if (this.statReceiver == null) Debug.LogError(": StatReceiver is null", transform.gameObject);
         this.statReceiver.ReceiveStat(this.damage, this.moveSpeed);
         this.statReceiver = null;
@@ -55,8 +46,6 @@ public class StatSender : HuyMonoBehaviour
     //=======================================Other Func============================================
     protected virtual void DefaultStat()
     {
-        if (this.statSenderSO == null) Debug.LogError(transform.name + ": No StatSenderSO", transform.gameObject);
-        this.canSendTags = this.statSenderSO.CanSendTags;
         this.statReceiver = null;
     }
 

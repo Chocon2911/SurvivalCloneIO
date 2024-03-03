@@ -9,6 +9,9 @@ public class PlayerObjStat : CharacterStat
     public PlayerObjManager PlayerObjManager => playerObjManager;
 
     [Header("Stat")]
+    [SerializeField] protected int currLevel;
+    public int CurrentLevel => currLevel;
+
     [SerializeField] protected bool isDead;
     public bool IsDead => isDead;
 
@@ -26,6 +29,12 @@ public class PlayerObjStat : CharacterStat
     protected virtual void Update()
     {
         this.CheckIsDead();
+    }
+
+    //===========================================Set================================================
+    public virtual void AddCurrLevel(int value)
+    {
+        this.currLevel += value;
     }
 
     //=========================================Checker==============================================
@@ -64,6 +73,7 @@ public class PlayerObjStat : CharacterStat
 
         //Player
         //Stat
+        this.currLevel = 0;
         this.isDead = false;
     }
 }

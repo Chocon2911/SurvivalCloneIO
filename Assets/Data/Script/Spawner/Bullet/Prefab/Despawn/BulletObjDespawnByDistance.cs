@@ -26,15 +26,17 @@ public class BulletObjDespawnByDistance : DespawnByDistance
         Debug.Log(transform.name + ": LoadBulletObjManager", transform.gameObject);
     }
 
-    //=======================================Reset Value===========================================
-    protected virtual void BasetStat()
-    {
-        this.maxDistance = this.bulletObjManager.BulletObjSO.MaxDistance;
-    }
-
+    //=========================================Despawn=============================================
     protected override void DespawnObj()
     {
         BulletSpawner.Instance.DespawnObj(transform.parent);
         Debug.Log(transform.name + ": DespawnObj", transform.gameObject);
+    }
+
+    //=======================================Reset Value===========================================
+    protected virtual void BasetStat()
+    {
+        if (this.bulletObjManager == null) Debug.LogError(transform.name + ": No BulletObjManager", transform.gameObject);
+        this.maxDistance = this.bulletObjManager.BulletObjStat.DespawnDistance;
     }
 }

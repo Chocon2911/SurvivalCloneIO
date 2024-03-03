@@ -36,7 +36,7 @@ public class GameManager : HuyMonoBehaviour
         this.LoadMainCamera();
     }
 
-    protected virtual void FixedUpdate()
+    protected virtual void Update()
     {
         this.CheckActivePlayer();
     }

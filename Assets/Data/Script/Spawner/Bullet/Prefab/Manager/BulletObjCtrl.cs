@@ -8,10 +8,20 @@ public class BulletObjCtrl : HuyMonoBehaviour
     [SerializeField] protected BulletObjManager bulletObjManager;
     public BulletObjManager BulletObjManager => bulletObjManager;
 
+    protected virtual void OnEnable()
+    {
+        this.DefaultStat();
+    }
+
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadBulletObjManager();
+    }
+
+    protected virtual void Update()
+    {
+        this.UpdateDamage();
     }
 
     //===================================Load Component============================================
@@ -22,13 +32,20 @@ public class BulletObjCtrl : HuyMonoBehaviour
         Debug.Log(transform.name + ": LoadBulletObjManager", transform.gameObject);
     }
 
-    //========================================Update===============================================
-    protected virtual void StatDamage()
+    //=======================================Update================================================
+    protected virtual void UpdateDamage()
     {
-        //Continue...
+        this.bulletObjManager.DamageSender.SetDamage(this.bulletObjManager.BulletObjStat.Damage);
     }
 
-    //========================================Collide==============================================
+    //======================================OtherFunc===============================================
+    protected virtual void DefaultStat()
+    {
+        if (this.bulletObjManager == null) Debug.LogError(transform.name + ": No BulletObjManager", transform.gameObject);
+        this.bulletObjManager.DamageSender.SetDamage(this.bulletObjManager.BulletObjStat.Damage);
+    }
+
+    //=======================================Collide================================================
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         foreach(string tag in this.bulletObjManager.DamageSender.CanDamageTags)

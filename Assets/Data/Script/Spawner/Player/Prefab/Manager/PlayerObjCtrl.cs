@@ -22,6 +22,7 @@ public class PlayerObjCtrl : HuyMonoBehaviour
     {
         this.UpdateHealth();
         this.UpdateStatSender();
+        this.UpdateLevel();
     }
 
     //======================================Load Component=========================================
@@ -43,5 +44,13 @@ public class PlayerObjCtrl : HuyMonoBehaviour
     {
         this.playerObjManager.StatSender.SetDamage(this.playerObjManager.PlayerObjStat.Damage);
         this.playerObjManager.StatSender.SetMoveSpeed(this.playerObjManager.PlayerObjStat.MoveSpeed);
+    }
+
+    protected virtual void UpdateLevel()
+    {
+        if (this.playerObjManager.PlayerObjStat.CurrentLevel >= this.playerObjManager.ExpReceiver.CurrLevel) return;
+        this.playerObjManager.PlayerObjStat.AddCurrLevel(1);
+        this.playerObjManager.PlayerObjStat.AddDamage(1);
+        this.playerObjManager.PlayerObjStat.AddAttackCooldownMultiplier(0.5f);
     }
 }

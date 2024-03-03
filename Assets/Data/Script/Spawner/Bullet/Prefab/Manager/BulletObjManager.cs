@@ -24,6 +24,9 @@ public class BulletObjManager : HuyMonoBehaviour
     [SerializeField] protected StatReceiver statReceiver;
     public StatReceiver StatReceiver => statReceiver;
 
+    [SerializeField] protected BulletObjStat bulletObjStat;
+    public BulletObjStat BulletObjStat => bulletObjStat;
+
     [SerializeField] protected Rigidbody2D rb;
     public Rigidbody2D Rb => rb;
 
@@ -42,6 +45,7 @@ public class BulletObjManager : HuyMonoBehaviour
         this.LoadDespawnByCollide();
         this.LoadDamageSender();
         this.LoadStatReceiver();
+        this.LoadBulletObjStat();
         this.LoadRigidbody();
         this.LoadBodyCollider();
     }
@@ -108,6 +112,13 @@ public class BulletObjManager : HuyMonoBehaviour
         if (this.statReceiver != null) return;
         this.statReceiver = transform.Find("StatReceiver").GetComponent<StatReceiver>();
         Debug.Log(transform.name + ": LoadStatReceiver", transform.gameObject);
+    }
+
+    protected virtual void LoadBulletObjStat()
+    {
+        if (this.bulletObjStat != null) return;
+        this.bulletObjStat = transform.Find("Stat").GetComponent<BulletObjStat>();
+        Debug.Log(transform.name + ": LoadBulletObjStat", transform.gameObject);
     }
 
     //===================================Reset Value===============================================

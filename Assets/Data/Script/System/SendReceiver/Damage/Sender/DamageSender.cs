@@ -33,7 +33,7 @@ public class DamageSender : HuyMonoBehaviour
         Debug.Log(transform.name + ": LoadStatReceiver", transform.gameObject);
     }
 
-    //========================================Damage===============================================
+    //========================================public===============================================
     public virtual void Sender(Transform targetTrans)
     {
         this.LoadDamageReceiver(targetTrans);
@@ -41,6 +41,11 @@ public class DamageSender : HuyMonoBehaviour
         this.damageReceiver.AddDamageTaken(this.damage);
         this.damageReceiver = null;
         Debug.Log(transform.name, transform.gameObject);
+    }
+
+    public virtual void SetDamage(float value)
+    {
+        this.damage = value;
     }
 
     //=======================================Other Func============================================

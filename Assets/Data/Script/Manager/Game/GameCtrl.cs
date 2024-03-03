@@ -17,6 +17,11 @@ public class GameCtrl : HuyMonoBehaviour
         this.DefaultStat();
     }
 
+    protected virtual void Start()
+    {
+        this.DefaultStat();
+    }
+
     protected override void LoadComponent()
     {
         base.LoadComponent();

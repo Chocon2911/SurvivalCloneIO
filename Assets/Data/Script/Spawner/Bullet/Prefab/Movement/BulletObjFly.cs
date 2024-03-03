@@ -32,10 +32,7 @@ public class BulletObjFly : StraightFly
     protected virtual void DefaultStat()
     {
         if (this.bulletObjManager == null) Debug.LogError(transform.name + ": No BulletObjManager", transform.gameObject);
-
         //flySpeed
-        float moveSpeed = this.bulletObjManager.BulletObjSO.MoveSpeed;
-        float additionalMoveSpeed = this.bulletObjManager.StatReceiver.AdditionalMoveSpeed;
-        this.flySpeed = moveSpeed + additionalMoveSpeed;
+        this.flySpeed = this.bulletObjManager.BulletObjStat.MoveSpeed; ;
     }
 }

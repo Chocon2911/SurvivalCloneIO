@@ -22,7 +22,7 @@ public class ExpReceiver : HuyMonoBehaviour
         this.DefaultStat();
     }
 
-    protected virtual void FixedUpdate()
+    protected virtual void Update()
     {
         this.LevelUp();
     }
@@ -31,9 +31,9 @@ public class ExpReceiver : HuyMonoBehaviour
     public virtual void RaiseExp(int expAmount)
     {
         this.currExpAmount += expAmount;
-        Debug.Log(transform.name + ": RaiseExp + " + expAmount, transform.gameObject);
     }
 
+    //========================================Update===============================================
     protected virtual void LevelUp()
     {
         if (this.currLevel >= this.exp2LevelUps.Count) return;
