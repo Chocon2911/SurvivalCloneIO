@@ -47,6 +47,7 @@ public class HealthBarUIManager : HuyMonoBehaviour
     //===========================================Public============================================
     protected virtual void SetHealth(float health)
     {
+        if (health < 0) health = 0;
         this.slider.value = health;
     }
 }
